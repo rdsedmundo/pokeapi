@@ -1,0 +1,10 @@
+machine:
+  node:
+    version: 7.6.0
+compile:
+  override:
+    - npm install
+test:
+  override:
+    - npm run lint
+    - npm run test

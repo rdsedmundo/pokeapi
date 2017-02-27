@@ -1,0 +1,35 @@
+{
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "extends": ["airbnb-base"],
+  "plugins": ["html"],
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "webpack.config.js"
+      }
+    }
+  },
+  "rules": {
+    "import/extensions": ["error", "always", {
+      "js": "never",
+      "vue": "never"
+    }],
+    "spaced-comment": 0,
+    "no-param-reassign": 0,
+    "no-use-before-define": 0,
+    "wrap-iife": ["error", "any"],
+    "class-methods-use-this": ["error", { "exceptMethods": ["getName", "getGroup"] }],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "postcss.config.js",
+          "webpack.config.js"
+        ]
+      }
+    ]
+  }
+}

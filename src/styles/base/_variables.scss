@@ -1,0 +1,250 @@
+$base-spacing-unit:     8px;
+$base-line-height:      $base-spacing-unit * 3;
+$base-line-multiplier:  $base-spacing-unit / 2;
+
+$font-sans:           'Source Sans Pro', 'Helvetica Neue', Calibre, Helvetica, Arial, sans-serif;
+
+
+$zindex-header: 1800;
+$zindex-header-content: 2000;
+$zindex-header-search: 1800;
+$zindex-modal: 10000;
+
+$font-size-micro:     12px;
+$font-size-small:     14px;
+$font-size-base:      16px;
+$font-size-large:     20px;
+$font-size-mega:      24px;
+$font-size-giga:      34px;
+$font-size-tera:      45px;
+$font-size-peta:      56px;
+$font-size-exa:       82px;
+$font-size-zetta:     112px;
+
+$color-black: #000000;
+$color-white: #FFFFFF;
+
+
+$gray: (
+    #F5F5F5,
+    #E0E0E0,
+    #C1C1C1,
+    #999999,
+    #7A7A7A,
+    #5C5C5C,
+    #474747,
+);
+
+
+$color-gray-lightest: nth($gray, 1);
+$color-gray-lighter: nth($gray, 2);
+$color-gray-light: nth($gray, 3);
+$color-gray: nth($gray, 4);
+$color-gray-dark: nth($gray, 5);
+$color-gray-darker: nth($gray, 6);
+$color-gray-darkest: nth($gray, 7);
+
+
+$red: (
+    #FFEDED,
+    #FFC9C9,
+    #FF9494,
+    #FF4D4D,
+    #C24545,
+    #853D3D,
+    #5C3838,
+);
+
+$color-red-lightest: nth($red, 1);
+$color-red-lighter: nth($red, 2);
+$color-red-light: nth($red, 3);
+$color-red: nth($red, 4);
+$color-red-dark: nth($red, 5);
+$color-red-darker: nth($red, 6);
+$color-red-darkest: nth($red, 7);
+
+
+$orange: (
+    #FFF6ED,
+    #FFE4C9,
+    #FFC994,
+    #FFA64D,
+    #C28345,
+    #85613D,
+    #5C4A38,
+);
+
+$color-orange-lightest: nth($orange, 1);
+$color-orange-lighter: nth($orange, 2);
+$color-orange-light: nth($orange, 3);
+$color-orange: nth($orange, 4);
+$color-orange-dark: nth($orange, 5);
+$color-orange-darker: nth($orange, 6);
+$color-orange-darkest: nth($orange, 7);
+
+
+$yellow: (
+    #FFFAE6,
+    #FFF2B3,
+    #FFE566,
+    #FFD500,
+    #C2A410,
+    #85741F,
+    #5C5329,
+);
+
+$color-yellow-lightest: nth($yellow, 1);
+$color-yellow-lighter: nth($yellow, 2);
+$color-yellow-light: nth($yellow, 3);
+$color-yellow: nth($yellow, 4);
+$color-yellow-dark: nth($yellow, 5);
+$color-yellow-darker: nth($yellow, 6);
+$color-yellow-darkest: nth($yellow, 7);
+
+
+$green: (
+    #F3FAEB,
+    #DAEFC5,
+    #B5E08A,
+    #85CC3D,
+    #6C9E3A,
+    #547037,
+    #435135,
+);
+
+$color-green-lightest: nth($green, 1);
+$color-green-lighter: nth($green, 2);
+$color-green-light: nth($green, 3);
+$color-green: nth($green, 4);
+$color-green-dark: nth($green, 5);
+$color-green-darker: nth($green, 6);
+$color-green-darkest: nth($green, 7);
+
+
+$aqua: (
+    #E6F7F7,
+    #B3E6E8,
+    #66CED1,
+    #00AEB3,
+    #10898C,
+    #1F6466,
+    #294B4C,
+);
+
+$color-aqua-lightest: nth($aqua, 1);
+$color-aqua-lighter: nth($aqua, 2);
+$color-aqua-light: nth($aqua, 3);
+$color-aqua: nth($aqua, 4);
+$color-aqua-dark: nth($aqua, 5);
+$color-aqua-darker: nth($aqua, 6);
+$color-aqua-darkest: nth($aqua, 7);
+
+
+$blue: (
+    #EBF7FC,
+    #C2E8F6,
+    #84D1EE,
+    #33B3E4,
+    #338CAF,
+    #33667A,
+    #334C56,
+);
+
+$color-blue-lightest: nth($blue, 1);
+$color-blue-lighter: nth($blue, 2);
+$color-blue-light: nth($blue, 3);
+$color-blue: nth($blue, 4);
+$color-blue-dark: nth($blue, 5);
+$color-blue-darker: nth($blue, 6);
+$color-blue-darkest: nth($blue, 7);
+
+
+$color-facebook: #3b5998;
+$color-twitter: #55ACEE;
+$color-gplus: #F44336;
+
+
+$border-radius-small: 2px;
+$border-radius-base: 4px;
+$border-radius-large: 8px;
+
+// Small screen / mobile
+$screen-sm-min:              576px;
+
+// Medium screen / desktop
+$screen-md-min:              768px;
+
+// Large screen / desktop
+$screen-lg-min:              992px;
+
+// Extra large screen / wide desktop
+$screen-xl-min:              1200px;
+
+// So media queries don't overlap when required, provide a maximum
+$screen-xs-max:              ($screen-sm-min - 1);
+$screen-sm-max:              ($screen-md-min - 1);
+$screen-md-max:              ($screen-lg-min - 1);
+$screen-lg-max:              ($screen-xl-min - 1);
+
+
+$breakpoints: (
+    "xs"          "screen and (max-width: #{$screen-xs-max})",
+    "sm"          "screen and (min-width: #{$screen-sm-min}) and (max-width: #{$screen-sm-max})",
+    "md"          "screen and (min-width: #{$screen-md-min}) and (max-width: #{$screen-md-max})",
+    "lg"          "screen and (min-width: #{$screen-lg-min}) and (max-width: #{$screen-lg-max})",
+    "xl"          "screen and (min-width: #{$screen-xl-min})"
+) !default;
+
+$colors: (
+    'black'                     #000000,
+    'white'                     #FFFFFF,
+    'gray-lightest'             $color-gray-lightest,
+    'gray-lighter'              $color-gray-lighter,
+    'gray-light'                $color-gray-light,
+    'gray'                      $color-gray,
+    'gray-dark'                 $color-gray-dark,
+    'gray-darker'               $color-gray-darker,
+    'gray-darkest'              $color-gray-darkest,
+    'red-lightest'              $color-red-lightest,
+    'red-lighter'               $color-red-lighter,
+    'red-light'                 $color-red-light,
+    'red'                       $color-red,
+    'red-dark'                  $color-red-dark,
+    'red-darker'                $color-red-darker,
+    'red-darkest'               $color-red-darkest,
+    'orange-lightest'           $color-orange-lightest,
+    'orange-lighter'            $color-orange-lighter,
+    'orange-light'              $color-orange-light,
+    'orange'                    $color-orange,
+    'orange-dark'               $color-orange-dark,
+    'orange-darker'             $color-orange-darker,
+    'orange-darkest'            $color-orange-darkest,
+    'yellow-lightest'           $color-yellow-lightest,
+    'yellow-lighter'            $color-yellow-lighter,
+    'yellow-light'              $color-yellow-light,
+    'yellow'                    $color-yellow,
+    'yellow-dark'               $color-yellow-dark,
+    'yellow-darker'             $color-yellow-darker,
+    'yellow-darkest'            $color-yellow-darkest,
+    'green-lightest'            $color-green-lightest,
+    'green-lighter'             $color-green-lighter,
+    'green-light'               $color-green-light,
+    'green'                     $color-green,
+    'green-dark'                $color-green-dark,
+    'green-darker'              $color-green-darker,
+    'green-darkest'             $color-green-darkest,
+    'aqua-lightest'             $color-aqua-lightest,
+    'aqua-lighter'              $color-aqua-lighter,
+    'aqua-light'                $color-aqua-light,
+    'aqua'                      $color-aqua,
+    'aqua-dark'                 $color-aqua-dark,
+    'aqua-darker'               $color-aqua-darker,
+    'aqua-darkest'              $color-aqua-darkest,
+    'blue-lightest'             $color-blue-lightest,
+    'blue-lighter'              $color-blue-lighter,
+    'blue-light'                $color-blue-light,
+    'blue'                      $color-blue,
+    'blue-dark'                 $color-blue-dark,
+    'blue-darker'               $color-blue-darker,
+    'blue-darkest'              $color-blue-darkest
+) !default;

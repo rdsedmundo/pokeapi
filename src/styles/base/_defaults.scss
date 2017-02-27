@@ -1,0 +1,31 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  min-height: 100vh;
+  color: $color-white;
+  font: {
+    family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    size: 1.6rem;
+  }
+  background: {
+    image: url('/assets/bg.png');
+    size: 100% 100%;
+    repeat: no-repeat;
+  }
+}
+
+img {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-touch-callout: none;
+}

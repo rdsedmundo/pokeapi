@@ -1,0 +1,85 @@
+@mixin font-size-micro {
+    font-size: $font-size-micro;
+    line-height: $base-line-multiplier * 4;
+}
+
+@mixin font-size-small {
+    font-size: $font-size-small;
+    line-height: $base-line-multiplier * 5;
+}
+
+@mixin font-size-base {
+    font-size: $font-size-base;
+    line-height: $base-line-height;
+}
+
+@mixin font-size-large {
+    font-size: $font-size-large;
+    line-height: $base-line-multiplier * 7;
+}
+
+@mixin font-size-mega {
+    font-size: $font-size-mega;
+    line-height: $base-line-multiplier * 8;
+    font-weight: 300;
+}
+
+@mixin font-size-giga {
+    font-size: $font-size-giga;
+    line-height: $base-line-multiplier * 10;
+    font-weight: 300;
+}
+
+@mixin font-size-tera {
+    font-size: $font-size-tera;
+    line-height: $base-line-multiplier * 12;
+    font-weight: 300;
+}
+
+@mixin font-size-peta {
+    font-size: $font-size-peta;
+    line-height: $base-line-multiplier * 16;
+    font-weight: 300;
+}
+
+@mixin font-size-exa {
+    font-size: $font-size-exa;
+    line-height: $base-line-multiplier * 22;
+    font-weight: 300;
+}
+
+@mixin font-size-zetta {
+    font-size: $font-size-zetta;
+    line-height: $base-line-multiplier * 28;
+    font-weight: 300;
+}
+
+// Media query mixin
+@mixin media-query($mq) {
+    $breakpoint-found: false;
+
+    @each $breakpoint in $breakpoints {
+
+        // Grab the alias and the condition from their respective locations in
+        // the list.
+        $alias:     nth($breakpoint, 1);
+        $condition: nth($breakpoint, 2);
+
+        // If the media query we've specified has an alias and a condition...
+        @if $mq == $alias and $condition {
+
+            // ...tell the mixin that we've found it...
+            $breakpoint-found: true;
+
+            // ...and spit it out here.
+            @media #{$condition} {
+                @content;
+            }
+        }
+    }
+
+    // If the user specifies a non-exitent alias, send them a warning.
+    @if $breakpoint-found == false {
+        @warn "Oops! Breakpoint '#{$mq}' does not exist.";
+    }
+}

@@ -1,0 +1,105 @@
+$base-space: 2 * $base-spacing-unit; // 16px
+
+$attributes: (
+    "m"    "margin",
+    "p"    "padding"
+) !default;
+
+@mixin spacing-helpers($widths-breakpoint: null) {
+    @each $attribute in $attributes {
+        $prefix:    nth($attribute, 1);
+        $attr:      nth($attribute, 2);
+
+        // 16px
+        .#{$widths-breakpoint}#{$prefix}  { #{$attr}: $base-space; }
+        .#{$widths-breakpoint}#{$prefix}t { #{$attr}-top: $base-space; }
+        .#{$widths-breakpoint}#{$prefix}r { #{$attr}-right: $base-space; }
+        .#{$widths-breakpoint}#{$prefix}b { #{$attr}-bottom: $base-space; }
+        .#{$widths-breakpoint}#{$prefix}l { #{$attr}-left: $base-space; }
+        .#{$widths-breakpoint}#{$prefix}h { #{$attr}-right: $base-space; #{$attr}-left: $base-space; }
+        .#{$widths-breakpoint}#{$prefix}v { #{$attr}-top: $base-space; #{$attr}-bottom: $base-space; }
+
+        // 4px
+        .#{$widths-breakpoint}#{$prefix}--  { #{$attr}: $base-space / 4; }
+        .#{$widths-breakpoint}#{$prefix}t-- { #{$attr}-top: $base-space / 4; }
+        .#{$widths-breakpoint}#{$prefix}r-- { #{$attr}-right: $base-space / 4; }
+        .#{$widths-breakpoint}#{$prefix}b-- { #{$attr}-bottom: $base-space / 4; }
+        .#{$widths-breakpoint}#{$prefix}l-- { #{$attr}-left: $base-space / 4; }
+        .#{$widths-breakpoint}#{$prefix}h-- { #{$attr}-right: $base-space / 4; #{$attr}-left: $base-space / 4; }
+        .#{$widths-breakpoint}#{$prefix}v-- { #{$attr}-top: $base-space / 4; #{$attr}-bottom: $base-space / 4; }
+
+        // 8px
+        .#{$widths-breakpoint}#{$prefix}-  { #{$attr}: $base-space / 2; }
+        .#{$widths-breakpoint}#{$prefix}t- { #{$attr}-top: $base-space / 2; }
+        .#{$widths-breakpoint}#{$prefix}r- { #{$attr}-right: $base-space / 2; }
+        .#{$widths-breakpoint}#{$prefix}b- { #{$attr}-bottom: $base-space / 2; }
+        .#{$widths-breakpoint}#{$prefix}l- { #{$attr}-left: $base-space / 2; }
+        .#{$widths-breakpoint}#{$prefix}h- { #{$attr}-right: $base-space / 2; #{$attr}-left: $base-space / 2; }
+        .#{$widths-breakpoint}#{$prefix}v- { #{$attr}-top: $base-space / 2; #{$attr}-bottom: $base-space / 2; }
+
+        // 32px
+        .#{$widths-breakpoint}#{$prefix}\+  { #{$attr}: $base-space * 2; }
+        .#{$widths-breakpoint}#{$prefix}t\+ { #{$attr}-top: $base-space * 2; }
+        .#{$widths-breakpoint}#{$prefix}r\+ { #{$attr}-right: $base-space * 2; }
+        .#{$widths-breakpoint}#{$prefix}b\+ { #{$attr}-bottom: $base-space * 2; }
+        .#{$widths-breakpoint}#{$prefix}l\+ { #{$attr}-left: $base-space * 2; }
+        .#{$widths-breakpoint}#{$prefix}h\+ { #{$attr}-right: $base-space * 2; #{$attr}-left: $base-space * 2; }
+        .#{$widths-breakpoint}#{$prefix}v\+ { #{$attr}-top: $base-space * 2; #{$attr}-bottom: $base-space * 2; }
+
+        // 48px
+        .#{$widths-breakpoint}#{$prefix}\+\+  { #{$attr}: $base-space * 3; }
+        .#{$widths-breakpoint}#{$prefix}t\+\+ { #{$attr}-top: $base-space * 3; }
+        .#{$widths-breakpoint}#{$prefix}r\+\+ { #{$attr}-right: $base-space * 3; }
+        .#{$widths-breakpoint}#{$prefix}b\+\+ { #{$attr}-bottom: $base-space * 3; }
+        .#{$widths-breakpoint}#{$prefix}l\+\+ { #{$attr}-left: $base-space * 3; }
+        .#{$widths-breakpoint}#{$prefix}h\+\+ { #{$attr}-right: $base-space * 3; #{$attr}-left: $base-space * 3; }
+        .#{$widths-breakpoint}#{$prefix}v\+\+ { #{$attr}-top: $base-space * 3; #{$attr}-bottom: $base-space * 3; }
+
+        // 64px
+        .#{$widths-breakpoint}#{$prefix}\+\+\+  { #{$attr}: $base-space * 4; }
+        .#{$widths-breakpoint}#{$prefix}t\+\+\+ { #{$attr}-top: $base-space * 4; }
+        .#{$widths-breakpoint}#{$prefix}r\+\+\+ { #{$attr}-right: $base-space * 4; }
+        .#{$widths-breakpoint}#{$prefix}b\+\+\+ { #{$attr}-bottom: $base-space * 4; }
+        .#{$widths-breakpoint}#{$prefix}l\+\+\+ { #{$attr}-left: $base-space * 4; }
+        .#{$widths-breakpoint}#{$prefix}h\+\+\+ { #{$attr}-right: $base-space * 4; #{$attr}-left: $base-space * 4; }
+        .#{$widths-breakpoint}#{$prefix}v\+\+\+ { #{$attr}-top: $base-space * 4; #{$attr}-bottom: $base-space * 4; }
+
+        // 96px
+        .#{$widths-breakpoint}#{$prefix}\+\+\+\+  { #{$attr}: $base-space * 6; }
+        .#{$widths-breakpoint}#{$prefix}t\+\+\+\+ { #{$attr}-top: $base-space * 6; }
+        .#{$widths-breakpoint}#{$prefix}r\+\+\+\+ { #{$attr}-right: $base-space * 6; }
+        .#{$widths-breakpoint}#{$prefix}b\+\+\+\+ { #{$attr}-bottom: $base-space * 6; }
+        .#{$widths-breakpoint}#{$prefix}l\+\+\+\+ { #{$attr}-left: $base-space * 6; }
+        .#{$widths-breakpoint}#{$prefix}h\+\+\+\+ { #{$attr}-right: $base-space * 6; #{$attr}-left: $base-space * 6; }
+        .#{$widths-breakpoint}#{$prefix}v\+\+\+\+ { #{$attr}-top: $base-space * 6; #{$attr}-bottom: $base-space * 6; }
+
+        // 0px
+        .#{$widths-breakpoint}#{$prefix}0  { #{$attr}: 0; }
+        .#{$widths-breakpoint}#{$prefix}t0 { #{$attr}-top: 0; }
+        .#{$widths-breakpoint}#{$prefix}r0 { #{$attr}-right: 0; }
+        .#{$widths-breakpoint}#{$prefix}b0 { #{$attr}-bottom: 0; }
+        .#{$widths-breakpoint}#{$prefix}l0 { #{$attr}-left: 0; }
+        .#{$widths-breakpoint}#{$prefix}h0 { #{$attr}-right: 0; #{$attr}-left: 0; }
+        .#{$widths-breakpoint}#{$prefix}v0 { #{$attr}-top: 0; #{$attr}-bottom: 0; }
+
+        @if $attr == 'margin' {
+            .#{$widths-breakpoint}#{$prefix}a  { #{$attr}: auto; }
+            .#{$widths-breakpoint}#{$prefix}ta { #{$attr}-top: auto; }
+            .#{$widths-breakpoint}#{$prefix}ra { #{$attr}-right: auto; }
+            .#{$widths-breakpoint}#{$prefix}ba { #{$attr}-bottom: auto; }
+            .#{$widths-breakpoint}#{$prefix}la { #{$attr}-left: auto; }
+            .#{$widths-breakpoint}#{$prefix}ha { #{$attr}-right: auto; #{$attr}-left: auto; }
+            .#{$widths-breakpoint}#{$prefix}va { #{$attr}-top: auto; #{$attr}-bottom: auto; }
+        }
+    }
+}
+
+@include spacing-helpers();
+
+@each $breakpoint in $breakpoints {
+  $alias: nth($breakpoint, 1);
+
+  @include media-query($alias) {
+      @include spacing-helpers(#{$alias}\/);
+  }
+}

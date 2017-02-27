@@ -1,0 +1,4 @@
+export default {
+  INTERNAL_SERVER_ERROR: 500,
+  MAX_SERVER_ERROR: 599,
+};
