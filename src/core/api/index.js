@@ -4,6 +4,7 @@ import Cache from 'core/cache';
 import Endpoint from 'models/endpoint';
 import httpCodes from 'helpers/http-codes';
 import localStorage from 'helpers/local-storage';
+import Toast from 'helpers/toast';
 
 const registerEndpoints = require.context('./endpoints', true, /\.js$/);
 
@@ -67,10 +68,14 @@ class API {
     }
 
     if (!response.config.isCached && response.config.localStorageCache) {
-      Cache.put(
-        Cache.createHash(response.config),
-        response.data,
-      );
+      try {
+        Cache.put(
+          Cache.createHash(response.config),
+          response.data,
+        );
+      } catch (err) {
+        Toast._('Something went wrong.', err);
+      }
     }
 
     return response;

@@ -29,6 +29,7 @@
     ]
   },
   "dependencies": {
+    "animate.css": "^3.5.2",
     "await-to-js": "^1.0.1",
     "axios": "^0.15.3",
     "babel-polyfill": "^6.23.0",

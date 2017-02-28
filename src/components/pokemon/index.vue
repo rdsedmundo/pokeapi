@@ -1,31 +1,15 @@
 <template>
   <div class="pokemon">
-    <p class="pokemon__name">
-      {{ name | sanitizeName }}
-    </p>
-    <p class="pokemon__health">HP {{ hp }} - A{{ attack }}</p>
     <img
-      :src="sprites.front_default || 'http://placehold.it/96x96'"
-      class="pokemon__avatar mb-"
+      :class="classObject"
+      :src="image"
+      :title="pokemon.name | sanitizeName"
+      class="pokemon__avatar"
     />
-
-    <select
-      v-model="choosenMove"
-      @change="getMoveData"
-    >
-      <option
-        v-for="move in moves"
-        :value="move.move.name"
-      >
-        {{ move.move.name | sanitizeName }}
-      </option>
-    </select>
   </div>
 </template>
 
 <script>
-import to from 'await-to-js';
-import API from 'core/api';
 import { sanitizeName } from 'helpers/utils';
 import Toast from 'helpers/toast';
 
@@ -34,42 +18,77 @@ export default {
   props: [
     'bus',
     'pokemon',
+    'team',
   ],
+  data() {
+    return {
+      sufferedAttack: false,
+    };
+  },
   created() {
-    this.getMoveData();
+    this.$set(this.pokemon, 'hp', 200);
 
     this.bus.$on('attack', (data) => {
       if (this.pokemon.id !== data.target) {
         return;
       }
 
-      if (this.hp - data.attack.value <= 0) {
+      if (this.pokemon.hp - data.attack.value <= 0) {
         this.$emit('dead', true);
         return;
       }
 
-      this.hp -= data.attack.value;
+      this.sufferedAttack = true;
+      this.pokemon.hp -= data.attack.value;
+      this.$emit('currentPokemon', this.pokemon);
+
+      window.setTimeout(() => {
+        this.sufferedAttack = false;
+      }, 3000);
+
+      Toast._(`${sanitizeName(this.pokemon.name)} suffered a damage of ${data.attack.value}.`);
     });
   },
-  data() {
-    return {
-      ...this.pokemon,
-      hp: 100,
-      choosenMove: this.pokemon.moves[0].move.name,
-      attack: 0,
-    };
-  },
-  methods: {
-    async getMoveData() {
-      const [err, response] = await to(API.$.move.getDetails(this.choosenMove));
+  computed: {
+    classObject() {
+      const animation = () => {
+        const options = [
+          'bounce',
+          'flash',
+          'flip',
+          'headShake',
+          'jello',
+          'tada',
+        ];
 
-      if (err) {
-        Toast._('Fail to get move data.', err);
-        return;
+        return options[Math.floor(Math.random() * options.length)];
+      };
+
+      return {
+        animated: this.sufferedAttack,
+        [animation()]: this.sufferedAttack,
+      };
+    },
+    image() {
+      const sprites = this.pokemon.sprites;
+
+      if (this.team === 'front' && sprites.front_default) {
+        if (this.sufferedAttack && sprites.front_shiny) {
+          return sprites.front_shiny;
+        }
+
+        return sprites.front_default;
       }
 
-      this.attack = response.data.power * (response.data.accuracy / 100);
-      this.$emit('setAttack', this.attack);
+      if (sprites.back_default) {
+        if (this.sufferedAttack && sprites.back_shiny) {
+          return sprites.back_shiny;
+        }
+
+        return sprites.back_default;
+      }
+
+      return 'http://placehold.it/96x96';
     },
   },
   filters: {
@@ -83,26 +102,11 @@ export default {
 <style lang="scss">
 .pokemon {
   display: inline-block;
-  padding: 5px 15px;
-  background-color: rgba(0, 0, 0, 0.5);
   text-align: center;
-
-  &__name {
-    color: white;
-    font: {
-      size: 1.8rem;
-      weight: bold;
-    }
-  }
-
-  &__health {
-    color: white;
-    font: {
-      size: 1.4rem;
-    }
-  }
+  cursor: pointer;
 
   &__avatar {
+    animation-duration: 3s;
     display: block;
     margin-left: auto;
     margin-right: auto;

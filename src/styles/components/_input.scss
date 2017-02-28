@@ -7,4 +7,10 @@ input {
   border: none;
   outline: none;
   border-radius: 5px;
+
+  &[disabled] {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: $color-gray-light;
+    cursor: not-allowed;
+  }
 }

@@ -2,6 +2,8 @@
   <section class="autocomplete">
     <input
       v-model="input"
+      :disabled="disabled"
+      :title="title"
       @focus="setFocus(true)"
       @blur="setFocus(false)"
       @keydown="handleArrowControls"
@@ -34,7 +36,10 @@ import { sanitizeName } from 'helpers/utils';
 
 export default {
   name: 'auto-complete',
-  props: ['items'],
+  props: [
+    'items',
+    'disabled',
+  ],
   data() {
     return {
       input: '',
@@ -43,6 +48,9 @@ export default {
     };
   },
   computed: {
+    title() {
+      return this.disabled ? 'You can\'t add more pokemons.' : '';
+    },
     filteredItems() {
       if (!this.input) return [];
 
@@ -119,6 +127,7 @@ export default {
 <style lang="scss">
 .autocomplete {
   position: relative;
+  z-index: 1000;
 
   &__input {
     width: 100%;
@@ -133,6 +142,7 @@ export default {
 
   &__item {
     background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
     transition: background-color .3s ease-in-out;
 
     &.active {

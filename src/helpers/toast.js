@@ -1,8 +1,9 @@
 export default (() => {
   const delay = 3000;
   const el = document.createElement('div');
-  el.classList.add('toast');
+  let timeoutHandle = null;
 
+  el.classList.add('toast');
   document.body.appendChild(el);
 
   ////////////////////
@@ -12,6 +13,10 @@ export default (() => {
   }
 
   function showMessage(msg, err) {
+    if (timeoutHandle) {
+      window.clearTimeout(timeoutHandle);
+    }
+
     if (err) {
       const stream = console;
       stream.warn('Handled error', err);
@@ -23,8 +28,10 @@ export default (() => {
       el.classList.add('toast__visible');
     }
 
-    window.setTimeout(() => {
+    timeoutHandle = window.setTimeout(() => {
       el.classList.remove('toast__visible');
+
+      timeoutHandle = null;
     }, delay);
   }
 

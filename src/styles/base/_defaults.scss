@@ -10,7 +10,7 @@ body {
   min-height: 100vh;
   color: $color-white;
   font: {
-    family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    family: monospace;
     size: 1.6rem;
   }
   background: {
@@ -28,4 +28,8 @@ img {
   -webkit-user-drag: none;
   user-drag: none;
   -webkit-touch-callout: none;
+}
+
+p {
+  margin: 0;
 }

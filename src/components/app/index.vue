@@ -1,11 +1,11 @@
 <template>
-  <main class="container-fluid p">
-    <section class="row center-xs start-sm">
+  <main class="container-fluid ph h-100vh">
+    <section class="row center-xs start-sm h-100%">
       <div class="col-xs-11 col-sm">
         <player
           :pokemons="pokemons"
           :bus="bus"
-          team="p1"
+          team="back"
         />
       </div>
 
@@ -13,7 +13,7 @@
         <player
           :pokemons="pokemons"
           :bus="bus"
-          team="p2"
+          team="front"
         />
       </div>
     </section>
@@ -32,9 +32,7 @@ const data = {
 };
 
 API.$.pokemon.getAll()
-  .then(
-    response => Vue.set(data, 'pokemons', response.data.results),
-  )
+  .then(response => Vue.set(data, 'pokemons', response.data.results))
   .catch(Toast._.bind(null, 'Something went wrong'));
 
 export default {
