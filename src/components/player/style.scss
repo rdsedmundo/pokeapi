@@ -1,0 +1,90 @@
+.player {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  &__currentpokemon {
+    min-height: 101px;
+
+    &__name {
+      color: white;
+      font: {
+        size: 1.8rem;
+        weight: bold;
+      }
+    }
+
+    &__health {
+      color: white;
+      font: {
+        size: 1.4rem;
+      }
+    }
+  }
+
+  &__information {
+    position: relative;
+    height: 100%;
+
+    .wrapper {
+      display: flex;
+      position: absolute;
+      width: 75%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &.back {
+      .wrapper {
+        flex-direction: column-reverse;
+        bottom: 15px;
+      }
+
+      .player__pokemonslist {
+        > .pokemon:nth-child(3n) {
+          top: -15px;
+        }
+      }
+    }
+
+    &.front {
+      .wrapper {
+        flex-flow: column;
+        top: 15px;
+      }
+
+      .player__pokemonslist {
+        > .pokemon:nth-child(odd) {
+          top: 15px;
+        }
+      }
+    }
+  }
+
+  &__pokemon-name {
+    color: white;
+    font: {
+      size: 1.8rem;
+      weight: bold;
+    }
+  }
+
+  &__pokemon-health {
+    color: white;
+    font: {
+      size: 1.4rem;
+    }
+  }
+
+  &__currentpokemon {
+    background-color: rgba(#1C1C1C, 0.9);
+    border: 2px solid black;
+    border-radius: 5px;
+  }
+
+  &__pokemonslist {
+    > .pokemon {
+      position: relative;
+    }
+  }
+}

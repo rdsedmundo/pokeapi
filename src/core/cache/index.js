@@ -3,11 +3,12 @@ import md5 from 'md5';
 /**
  * Cache duration in milliseconds
  */
-const CACHE_DURATION_TIME = 1000 * Number(process.env.API_REQUEST_CACHE_DURATION_TIME);
+export
+  const CACHE_DURATION_TIME = 1000 * (Number(process.env.API_REQUEST_CACHE_DURATION_TIME) || 86400);
 /**
  * Key where resources will be saved
  */
-const CACHE_IDENTIFIER_KEY = 'cachedResources';
+export const CACHE_IDENTIFIER_KEY = 'cachedResources';
 
 export default class Cache {
   /**
@@ -24,7 +25,7 @@ export default class Cache {
   static createCachedResources() {
     return window.localStorage.setItem(
       CACHE_IDENTIFIER_KEY,
-      {},
+      JSON.stringify({}),
     );
   }
 
@@ -45,10 +46,7 @@ export default class Cache {
     const getCachedResources = () => window.localStorage.getItem(CACHE_IDENTIFIER_KEY);
 
     if (!getCachedResources()) {
-      window.localStorage.setItem(
-        CACHE_IDENTIFIER_KEY,
-        JSON.stringify({}),
-      );
+      Cache.createCachedResources();
     } else if (checkExpired) {
       Cache.checkForExpiredCachedResources();
     }
@@ -66,7 +64,7 @@ export default class Cache {
 
     if (!cachedResource) return undefined;
 
-    return Cache.getCachedResources()[hash].data;
+    return cachedResource.data;
   }
 
   /**

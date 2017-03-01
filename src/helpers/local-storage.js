@@ -3,8 +3,8 @@ export default class LocalStorage {
     const test = 'isAvailable';
 
     try {
-      localStorage.setItem('test', test);
-      localStorage.removeItem('test');
+      window.localStorage.setItem('test', test);
+      window.localStorage.removeItem('test');
 
       return true;
     } catch (err) {

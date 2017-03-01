@@ -31,8 +31,9 @@
 </template>
 
 <script>
-import keyCodes from 'helpers/key-codes';
 import { sanitizeName } from 'helpers/utils';
+
+import * as methods from 'components/autocomplete/methods';
 
 export default {
   name: 'auto-complete',
@@ -71,83 +72,11 @@ export default {
     },
   },
   methods: {
-    setFocus(value) {
-      this.isFocused = value;
-    },
-    chooseItem() {
-      if (!this.filteredItems.length) return;
-
-      const selected = this.filteredItems[this.selectedIndex];
-
-      this.input = '';
-      this.$emit('chooseItem', selected.name);
-
-      document.activeElement.blur();
-    },
-    handleArrowControls(event) {
-      const key = event.which || event.keyCode;
-
-      switch (key) {
-        case keyCodes.ENTER: {
-          this.chooseItem();
-
-          event.preventDefault();
-          break;
-        }
-
-        case keyCodes.ARROW_UP: {
-          this.selectedIndex = Math.max(
-            this.selectedIndex - 1,
-            0,
-          );
-
-          event.preventDefault();
-          break;
-        }
-        case keyCodes.ARROW_DOWN: {
-          this.selectedIndex = Math.min(
-            this.selectedIndex + 1,
-            this.filteredItems.length - 1,
-          );
-
-          event.preventDefault();
-          break;
-        }
-
-        default: {
-          this.selectedIndex = 0;
-          break;
-        }
-      }
-    },
+    ...methods,
   },
 };
 </script>
 
 <style lang="scss">
-.autocomplete {
-  position: relative;
-  z-index: 1000;
-
-  &__input {
-    width: 100%;
-  }
-
-  &__suggestions {
-    position: absolute;
-    width: 100%;
-    max-height: 200px;
-    overflow: auto;
-  }
-
-  &__item {
-    background-color: rgba(0, 0, 0, 0.5);
-    cursor: pointer;
-    transition: background-color .3s ease-in-out;
-
-    &.active {
-      background-color: rgba(0, 0, 0, 0.8);
-    }
-  }
-}
+@import './style.scss';
 </style>
